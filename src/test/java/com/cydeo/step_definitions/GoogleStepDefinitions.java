@@ -1,49 +1,92 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.GoogleSearchPage;
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.naming.directory.DirContext;
+import javax.swing.text.Utilities;
+import java.security.Key;
 
 public class GoogleStepDefinitions {
 
     GoogleSearchPage googleSearchPage = new GoogleSearchPage();
 
+    @When("user types apple and clicks enter")
+    public void user_types_and_clicks_enter2() {
 
-    @When("user types {string} and clicks enter")
-    public void user_types_and_clicks_enter(String searchKeyword) {
-        googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+        googleSearchPage.cookiesConsentAgreeButton.click();
+
+/*
+        if (googleSearchPage.cookiesConsentButton.isDisplayed()){
+            googleSearchPage.cookiesConsentButton.click();
+        } else if (googleSearchPage.cookiesConsentAgreeButton.isDisplayed()){
+            googleSearchPage.cookiesConsentAgreeButton.click();
+        }else{
+            System.out.println("What the hack!");
+        }
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait.until(ExpectedConditions.visibilityOf(googleSearchPage.searchBox));
+*/
+
+        googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
+
     }
 
-    @Then("user sees {string} in the google title")
-    public void user_sees_in_the_google_title(String searchKeyword) {
-        String expectedTitle = searchKeyword + " - Google Search";
-        String actualTitle = Driver.getDriver().getTitle();
+    @Then("user sees apple in the google title")
+    public void user_sees_apple_in_the_google_title2() {
 
-        Assert.assertEquals("Title is not as expected!", expectedTitle, actualTitle);
-    }
-
-    @When("user types {word} and clicks enter")
-    public void user_types_apple_and_clicks_enter(String word) {
-        googleSearchPage.cookiesConsentButton.click();
-        googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER) ;
-    }
-    @Then("user sees {word} in the google title")
-    public void user_sees_apple_in_the_google_title(String word) {
-        String expectedTitle = word + " - Google Search";
+        String expectedTitle = "apple - Google Search";
         String actualTitle = Driver.getDriver().getTitle();
 
         //Junit assertion accepts first arg as expected, second arg as actual
-        Assert.assertEquals("Title is not as expected!", expectedTitle, actualTitle);
-    //    Assert.assertTrue(actualTitle.equals(expectedTitle));
+        Assert.assertEquals("Title is not as expected!",expectedTitle, actualTitle);
+
+        //Assert.assertTrue(actualTitle.equals(expectedTitle));
 
     }
+
+
+    @When("user types {string} and clicks enter")
+    public void user_types_and_clicks_enter(String searchKeyword) {
+
+        googleSearchPage.cookiesConsentAgreeButton.click();
+
+/*
+        if (googleSearchPage.cookiesConsentButton.isDisplayed()){
+            googleSearchPage.cookiesConsentButton.click();
+        } else if (googleSearchPage.cookiesConsentAgreeButton.isDisplayed()){
+            googleSearchPage.cookiesConsentAgreeButton.click();
+        }else{
+            System.out.println("What the hack!");
+        }
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait.until(ExpectedConditions.visibilityOf(googleSearchPage.searchBox));
+*/
+
+        googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+
+    }
+
+    @Then("user sees {string} in the google title")
+    public void user_sees_in_the_google_title(String string) {
+
+        String expectedTitle = string+" - Google Search";
+        String actualTitle = Driver.getDriver().getTitle();
+
+        //Junit assertion accepts first arg as expected, second arg as actual
+        Assert.assertEquals("Title is not as expected!",expectedTitle, actualTitle);
+
+    }
+
 
     @When("user is on Google search page")
     public void user_is_on_google_search_page() {
@@ -59,10 +102,9 @@ public class GoogleStepDefinitions {
 
         Assert.assertEquals(expectedTitle, actualTitle);
 
-        WebElement cookiesConsent = Driver.getDriver().findElement(By.xpath("//div[.='I agree']"));
-        cookiesConsent.click();
 
 
     }
+
 
 }

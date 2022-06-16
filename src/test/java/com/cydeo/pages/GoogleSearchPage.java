@@ -18,6 +18,9 @@ public class GoogleSearchPage {
     @FindBy (xpath = "//button[.='Accept all']")
     public WebElement cookiesConsentButton;
 
+    @FindBy (xpath = "//div[.='I agree']")
+    public WebElement cookiesConsentAgreeButton;
+
     @FindBy(name="q")
     public WebElement searchBox;
 
