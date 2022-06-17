@@ -23,19 +23,6 @@ public class GoogleStepDefinitions {
 
         googleSearchPage.cookiesConsentAgreeButton.click();
 
-/*
-        if (googleSearchPage.cookiesConsentButton.isDisplayed()){
-            googleSearchPage.cookiesConsentButton.click();
-        } else if (googleSearchPage.cookiesConsentAgreeButton.isDisplayed()){
-            googleSearchPage.cookiesConsentAgreeButton.click();
-        }else{
-            System.out.println("What the hack!");
-        }
-
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-        wait.until(ExpectedConditions.visibilityOf(googleSearchPage.searchBox));
-*/
-
         googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
 
     }
@@ -58,19 +45,6 @@ public class GoogleStepDefinitions {
     public void user_types_and_clicks_enter(String searchKeyword) {
 
         googleSearchPage.cookiesConsentAgreeButton.click();
-
-/*
-        if (googleSearchPage.cookiesConsentButton.isDisplayed()){
-            googleSearchPage.cookiesConsentButton.click();
-        } else if (googleSearchPage.cookiesConsentAgreeButton.isDisplayed()){
-            googleSearchPage.cookiesConsentAgreeButton.click();
-        }else{
-            System.out.println("What the hack!");
-        }
-
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-        wait.until(ExpectedConditions.visibilityOf(googleSearchPage.searchBox));
-*/
 
         googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
 
