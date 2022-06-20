@@ -60,9 +60,16 @@ public class BrowserUtils {
 
     }
 
-    /*
-Creating a utility method for ExplicitWait, so we don't have to repeat the lines
- */
+    /**
+     * This method will accept a String as expected value and verify actual URL CONTAINS the value
+     * @param expectedTitle
+     */
+    public static void verifyURLContains(String expectedTitle){
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedTitle));
+    }
+
+
+    //Creating a utility method for ExplicitWait, so we don't have to repeat the lines
     public static void waitForInvisibilityOf(WebElement webElement){
         //Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
