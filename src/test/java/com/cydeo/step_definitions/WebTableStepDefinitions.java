@@ -9,12 +9,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.Map;
+
 public class WebTableStepDefinitions {
 
     WebTableLoginPage webTableLoginPage = new WebTableLoginPage();
 
-    @Given("user is on the login page of the app")
-    public void user_is_on_the_login_page_of_the_app() {
+    @Given("user is on the login page of web table app")
+    public void user_is_on_the_login_page_of_the_web_table_app() {
         String url = ConfigurationReader.getProperty("web.table.url");
         Driver.getDriver().get(url);
     }
@@ -34,5 +36,23 @@ public class WebTableStepDefinitions {
     public void user_should_see_url_contains_orders() {
         BrowserUtils.verifyURLContains("orders");
     }
+
+    @When("user enters username {string} password {string} and logins")
+    public void user_enters_username_password_and_logins(String username, String password) {
+        webTableLoginPage.login(username, password);
+    }
+
+    @When("user enters below credentials")
+    public void user_enters_below_credentials(Map<String, String> credentials) {
+
+//        webTableLoginPage.inputUsername.sendKeys(credentials.get("username"));
+//        webTableLoginPage.inputPassword.sendKeys(credentials.get("password"));
+//        webTableLoginPage.loginButton.click();
+
+        //We call our login utility method and pass values from the map
+        webTableLoginPage.login(credentials.get("username"), credentials.get("password"));
+
+    }
+
 
 }
