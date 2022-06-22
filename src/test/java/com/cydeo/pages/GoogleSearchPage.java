@@ -15,7 +15,7 @@ public class GoogleSearchPage {
 
     //We can start locating web elements using @FindBy annotation
 
-    @FindBy (xpath = "//button[.='Accept all']")
+    @FindBy (xpath = "//button[@id='L2AGLb']//div[@class='QS5gu sy4vM']")
     public WebElement cookiesConsentButton;
 
     @FindBy (xpath = "//div[.='I agree']")

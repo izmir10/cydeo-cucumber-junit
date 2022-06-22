@@ -7,16 +7,15 @@ import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 
 import java.util.Map;
 
-public class WebTableStepDefinitions {
+public class WebTable_StepDefinitions {
 
     WebTableLoginPage webTableLoginPage = new WebTableLoginPage();
 
     @Given("user is on the login page of web table app")
-    public void user_is_on_the_login_page_of_the_web_table_app() {
+    public void user_is_on_the_login_page_of_web_table_app() {
         String url = ConfigurationReader.getProperty("web.table.url");
         Driver.getDriver().get(url);
     }
@@ -28,8 +27,8 @@ public class WebTableStepDefinitions {
     public void user_enters_password(String string) {
         webTableLoginPage.inputPassword.sendKeys(string);
     }
-    @When("user clicks the login button")
-    public void user_clicks_the_login_button() {
+    @When("user clicks to login button")
+    public void user_clicks_to_login_button() {
         webTableLoginPage.loginButton.click();
     }
     @Then("user should see url contains orders")
@@ -38,8 +37,10 @@ public class WebTableStepDefinitions {
     }
 
     @When("user enters username {string} password {string} and logins")
-    public void user_enters_username_password_and_logins(String username, String password) {
-        webTableLoginPage.login(username, password);
+    public void userEntersUsernamePasswordAndLogins(String username, String pw) {
+
+        webTableLoginPage.login(username, pw);
+
     }
 
     @When("user enters below credentials")
@@ -49,10 +50,11 @@ public class WebTableStepDefinitions {
 //        webTableLoginPage.inputPassword.sendKeys(credentials.get("password"));
 //        webTableLoginPage.loginButton.click();
 
-        //We call our login utility method and pass values from the map
+        //we can call our login utility method and pass values from map
         webTableLoginPage.login(credentials.get("username"), credentials.get("password"));
 
     }
+
 
 
 }
