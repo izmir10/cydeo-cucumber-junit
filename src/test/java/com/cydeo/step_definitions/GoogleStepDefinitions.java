@@ -1,18 +1,11 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.GoogleSearchPage;
-import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import javax.swing.text.Utilities;
-import java.security.Key;
 
 public class GoogleStepDefinitions {
 
@@ -21,10 +14,10 @@ public class GoogleStepDefinitions {
     @When("user types apple and clicks enter")
     public void user_types_and_clicks_enter2() {
 
-        if (googleSearchPage.cookiesConsentAgreeButton.isDisplayed()){
-            googleSearchPage.cookiesConsentButton.click();
-        } else if (googleSearchPage.cookiesConsentButton.isDisplayed()){
-            googleSearchPage.cookiesConsentAgreeButton.click();
+        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()){
+            googleSearchPage.cookiesAcceptAllButton.click();
+        } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()){
+            googleSearchPage.cookiesAgreeButton.click();
         }
 
         googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
@@ -50,10 +43,10 @@ public class GoogleStepDefinitions {
     @When("user types {string} and clicks enter")
     public void user_types_and_clicks_enter(String searchKeyword) {
 
-        if (googleSearchPage.cookiesConsentAgreeButton.isDisplayed()){
-            googleSearchPage.cookiesConsentButton.click();
-        } else if (googleSearchPage.cookiesConsentButton.isDisplayed()){
-            googleSearchPage.cookiesConsentAgreeButton.click();
+        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()){
+            googleSearchPage.cookiesAcceptAllButton.click();
+        } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()){
+            googleSearchPage.cookiesAgreeButton.click();
         }
 
         googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
