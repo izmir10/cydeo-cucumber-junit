@@ -34,9 +34,10 @@ public class GoogleStepDefinitions {
             googleSearchPage.cookiesAcceptAllButton.click();
         } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()){
             googleSearchPage.cookiesAgreeButton.click();
+        } else{
+            googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
         }
 
-        googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
 
     }
 
@@ -61,9 +62,11 @@ public class GoogleStepDefinitions {
             googleSearchPage.cookiesAcceptAllButton.click();
         } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()){
             googleSearchPage.cookiesAgreeButton.click();
+        } else{
+            googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
         }
 
-        googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+
 
     }
 
