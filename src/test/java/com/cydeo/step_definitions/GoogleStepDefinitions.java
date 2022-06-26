@@ -2,6 +2,7 @@ package com.cydeo.step_definitions;
 
 import com.cydeo.pages.GoogleSearchPage;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.da.Så;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -30,14 +31,25 @@ public class GoogleStepDefinitions {
     @When("user types apple and clicks enter")
     public void user_types_and_clicks_enter2() {
 
-        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()){
-            googleSearchPage.cookiesAcceptAllButton.click();
-        } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()){
-            googleSearchPage.cookiesAgreeButton.click();
-        } else{
+        if (googleSearchPage.searchBox.isDisplayed()) {
+            googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
+        } else if (!googleSearchPage.searchBox.isDisplayed()) {
+            if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
+                googleSearchPage.cookiesAcceptAllButton.click();
+            } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
+                googleSearchPage.cookiesAgreeButton.click();
+            }
             googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
         }
 
+/*
+        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
+            googleSearchPage.cookiesAcceptAllButton.click();
+        } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
+            googleSearchPage.cookiesAgreeButton.click();
+        }
+        googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
+*/
 
     }
 
@@ -48,7 +60,7 @@ public class GoogleStepDefinitions {
         String actualTitle = Driver.getDriver().getTitle();
 
         //Junit assertion accepts first arg as expected, second arg as actual
-        Assert.assertEquals("Title is not as expected!",expectedTitle, actualTitle);
+        Assert.assertEquals("Title is not as expected!", expectedTitle, actualTitle);
 
         //Assert.assertTrue(actualTitle.equals(expectedTitle));
 
@@ -58,29 +70,39 @@ public class GoogleStepDefinitions {
     @When("user types {string} and clicks enter")
     public void user_types_and_clicks_enter(String searchKeyword) {
 
-        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()){
-            googleSearchPage.cookiesAcceptAllButton.click();
-        } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()){
-            googleSearchPage.cookiesAgreeButton.click();
-        } else{
+        if (googleSearchPage.searchBox.isDisplayed()) {
+            googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+        } else if (!googleSearchPage.searchBox.isDisplayed()) {
+            if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
+                googleSearchPage.cookiesAcceptAllButton.click();
+            } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
+                googleSearchPage.cookiesAgreeButton.click();
+                googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+            }
             googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
         }
 
 
+        /*if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
+            googleSearchPage.cookiesAcceptAllButton.click();
+        } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
+            googleSearchPage.cookiesAgreeButton.click();
+            googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+        }
+        googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);*/
 
     }
 
     @Then("user sees {string} in the google title")
     public void user_sees_in_the_google_title(String string) {
 
-        String expectedTitle = string+" - Google Search";
+        String expectedTitle = string + " - Google Search";
         String actualTitle = Driver.getDriver().getTitle();
 
         //Junit assertion accepts first arg as expected, second arg as actual
-        Assert.assertEquals("Title is not as expected!",expectedTitle, actualTitle);
+        Assert.assertEquals("Title is not as expected!", expectedTitle, actualTitle);
 
     }
-
 
 
 }
