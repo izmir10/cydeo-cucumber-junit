@@ -31,7 +31,7 @@ public class GoogleStepDefinitions {
     @When("user types apple and clicks enter")
     public void user_types_and_clicks_enter2() {
 
-        if (googleSearchPage.searchBox.isDisplayed()) {
+/*        if (googleSearchPage.searchBox.isDisplayed()) {
             googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
         } else if (!googleSearchPage.searchBox.isDisplayed()) {
             if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
@@ -40,16 +40,14 @@ public class GoogleStepDefinitions {
                 googleSearchPage.cookiesAgreeButton.click();
             }
             googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
-        }
+        }*/
 
-/*
         if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
             googleSearchPage.cookiesAcceptAllButton.click();
         } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
             googleSearchPage.cookiesAgreeButton.click();
         }
         googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
-*/
 
     }
 
@@ -70,7 +68,7 @@ public class GoogleStepDefinitions {
     @When("user types {string} and clicks enter")
     public void user_types_and_clicks_enter(String searchKeyword) {
 
-        if (googleSearchPage.searchBox.isDisplayed()) {
+/*        if (googleSearchPage.searchBox.isDisplayed()) {
             googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
         } else if (!googleSearchPage.searchBox.isDisplayed()) {
             if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
@@ -80,16 +78,16 @@ public class GoogleStepDefinitions {
                 googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
             }
             googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
-        }
+        }*/
 
 
-        /*if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
+        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
             googleSearchPage.cookiesAcceptAllButton.click();
         } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
             googleSearchPage.cookiesAgreeButton.click();
             googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
         }
-        googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);*/
+        googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
 
     }
 
