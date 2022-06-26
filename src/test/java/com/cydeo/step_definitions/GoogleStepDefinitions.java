@@ -14,11 +14,11 @@ public class GoogleStepDefinitions {
     @When("user types apple and clicks enter")
     public void user_types_and_clicks_enter2() {
 
-        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()){
+/*        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()){
             googleSearchPage.cookiesAcceptAllButton.click();
         } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()){
             googleSearchPage.cookiesAgreeButton.click();
-        }
+        }*/
 
         googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
 
@@ -43,11 +43,11 @@ public class GoogleStepDefinitions {
     @When("user types {string} and clicks enter")
     public void user_types_and_clicks_enter(String searchKeyword) {
 
-        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()){
+/*        if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()){
             googleSearchPage.cookiesAcceptAllButton.click();
         } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()){
             googleSearchPage.cookiesAgreeButton.click();
-        }
+        }*/
 
         googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
 
