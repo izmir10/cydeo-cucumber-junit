@@ -21,10 +21,11 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <parallel>methods</parallel>
-                    <threadCount>4</threadCount>
-<!--
+                    <!--
                     <useUnlimitedThreads>true</useUnlimitedThreads>
 -->
+                    <threadCount>4</threadCount>
+                    <perCoreThreadCount>false</perCoreThreadCount>
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
                         <include>**/CukesRunner*.java</include>
@@ -75,6 +76,13 @@
             <groupId>me.jvt.cucumber</groupId>
             <artifactId>reporting-plugin</artifactId>
             <version>7.3.0</version>
+        </dependency>
+
+        <!--If you want to get rid of SLF4J Failed to load message from the console -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.32</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
