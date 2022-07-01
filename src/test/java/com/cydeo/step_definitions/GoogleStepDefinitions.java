@@ -45,8 +45,8 @@ public class GoogleStepDefinitions {
             }
         } catch(Exception e){
 
-
         }
+
         /*if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
             googleSearchPage.cookiesAcceptAllButton.click();
         } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
@@ -73,16 +73,20 @@ public class GoogleStepDefinitions {
     @When("user types {string} and clicks enter")
     public void user_types_and_clicks_enter(String searchKeyword) {
 
-        if (googleSearchPage.searchBox.isDisplayed()) {
-            googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
-        } else if (!googleSearchPage.searchBox.isDisplayed()) {
-            if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
-                googleSearchPage.cookiesAcceptAllButton.click();
-            } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
-                googleSearchPage.cookiesAgreeButton.click();
+        try {
+            if (googleSearchPage.searchBox.isDisplayed()) {
+                googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+            } else if (!googleSearchPage.searchBox.isDisplayed()) {
+                if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
+                    googleSearchPage.cookiesAcceptAllButton.click();
+                } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
+                    googleSearchPage.cookiesAgreeButton.click();
+                    googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+                }
                 googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
             }
-            googleSearchPage.searchBox.sendKeys(searchKeyword + Keys.ENTER);
+        }catch(Exception e){
+
         }
 
 
