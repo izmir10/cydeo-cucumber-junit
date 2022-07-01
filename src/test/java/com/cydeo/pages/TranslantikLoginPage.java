@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TranslantikLoginPage {
 
-    public TranslantikLoginPage(){
+    public TranslantikLoginPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -20,12 +20,15 @@ public class TranslantikLoginPage {
     @FindBy(id = "_submit")
     public WebElement loginBtn;
 
-    public void login(String username, String password){
+    @FindBy(id = "remember_me")
+    public WebElement rememberMeBtn;
+
+
+    public void login(String username, String password) {
         loginUser.sendKeys(username);
         loginPass.sendKeys(password);
         loginBtn.click();
     }
-
 
 
 }
