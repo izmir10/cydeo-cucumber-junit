@@ -7,6 +7,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
+import java.util.NoSuchElementException;
+
 public class GoogleStepDefinitions {
 
     GoogleSearchPage googleSearchPage = new GoogleSearchPage();
@@ -30,17 +32,21 @@ public class GoogleStepDefinitions {
     @When("user types apple and clicks enter")
     public void user_types_and_clicks_enter2() {
 
-        if (googleSearchPage.searchBox.isDisplayed()) {
-            googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
-        } else if (!googleSearchPage.searchBox.isDisplayed()) {
-            if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
-                googleSearchPage.cookiesAcceptAllButton.click();
-            } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
-                googleSearchPage.cookiesAgreeButton.click();
+        try {
+            if (googleSearchPage.searchBox.isDisplayed()) {
+                googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
+            } else if (!googleSearchPage.searchBox.isDisplayed()) {
+                if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
+                    googleSearchPage.cookiesAcceptAllButton.click();
+                } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
+                    googleSearchPage.cookiesAgreeButton.click();
+                }
+                googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
             }
-            googleSearchPage.searchBox.sendKeys("apple" + Keys.ENTER);
-        }
+        } catch(Exception e){
 
+
+        }
         /*if (googleSearchPage.cookiesAcceptAllButton.isDisplayed()) {
             googleSearchPage.cookiesAcceptAllButton.click();
         } else if (googleSearchPage.cookiesAgreeButton.isDisplayed()) {
