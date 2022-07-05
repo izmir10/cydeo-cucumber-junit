@@ -1,4 +1,4 @@
-@wip
+@calculator
 Feature: Calculator Tests
 
   Background:
